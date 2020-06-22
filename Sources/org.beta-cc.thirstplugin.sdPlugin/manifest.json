@@ -1,0 +1,84 @@
+{
+  "Actions": [
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "Set Values", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "Set one or all of the values. hunger and blood potency are set for the referenced character, the global webhook is set as the default.", 
+      "UUID": "org.beta-cc.thirstplugin.setvalues"
+    },
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "Post Message to Discord", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "Posts a message to a discord channel.", 
+      "UUID": "org.beta-cc.thirstplugin.postmessage"
+    },
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "Roll with Hunger", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "Rolls and includes your hunger set with the 'Set Hunger' Action", 
+      "UUID": "org.beta-cc.thirstplugin.rollwithhunger"
+    }
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "Roll without Hunger", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "Rolls, ignoring your hunger and Blood potency", 
+      "UUID": "org.beta-cc.thirstplugin.rollwithouthunger"
+    }
+    {
+      "Icon": "action/images/actionimage", 
+      "Name": "Roll Discipline", 
+      "States": [
+        {
+          "Image": "action/images/action"
+        }
+      ], 
+      "Tooltip": "Roll for discipline use. Your set blood potency and hunger affecting this roll.", 
+      "UUID": "org.beta-cc.thirstplugin.rolldiscipline"
+    }
+  ], 
+  "SDKVersion": 2,
+  "Author": "Christian Schulz", 
+  "Category": "Discord Thirst Bot",
+  "CategoryIcon": "action/images/discord_cat",
+  "CodePath": "index.html", 
+  "PropertyInspectorPath": "propertyinspector/index.html", 
+  "Description": "A plugin to control the discord-bot 'Thist' for playing Vampire - The Masquerade v5 in Discord", 
+  "Name": "Thirst Discord Bot Control", 
+  "Icon": "action/images/action", 
+  "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
+  "Version": "0.0.1",
+  "OS": [
+    {
+        "Platform": "mac", 
+        "MinimumVersion" : "10.11"
+    },
+    {
+        "Platform": "windows", 
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software": 
+    {
+        "MinimumVersion" : "4.1"
+  }
+}

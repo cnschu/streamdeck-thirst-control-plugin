@@ -16,14 +16,14 @@ $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
     /** subscribe to the willAppear and other events */
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.propertyInspectorDidAppear', (jsonObj) => {
+    $SD.on('org.beta-cc.thirstplugin.action.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.action.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.action.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.action.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.action.propertyInspectorDidAppear', (jsonObj) => {
         console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js]propertyInspectorDidAppear:');
     });
-    $SD.on('org.beta-cc.elgato.thirstplugin.action.propertyInspectorDidDisappear', (jsonObj) => {
+    $SD.on('org.beta-cc.thirstplugin.action.propertyInspectorDidDisappear', (jsonObj) => {
         console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js]propertyInspectorDidDisappear:');
     });
 };

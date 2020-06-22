@@ -2,7 +2,7 @@
   "Description": "Nimm diese Vorlage für dein erstes Plugin", 
   "Name": "Thirst Discord Bot Control", 
   "Category": "Templates", 
-  "org.beta-cc.elgato.thirstplugin.action": {
+  "org.beta-cc.thirstplugin.action": {
     "Name": "Action", 
     "Tooltip": "Dies ist die einzige 'Action' in diesem Template"
   },

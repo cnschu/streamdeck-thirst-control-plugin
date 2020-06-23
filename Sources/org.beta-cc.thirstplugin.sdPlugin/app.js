@@ -137,7 +137,46 @@ const action = {
         console.log('%c%s', `color: white; background: ${tagColor || 'grey'}; font-size: 15px;`, `[app.js]doSomeThing from: ${caller}`);
         // console.log(inJsonData);
     }, 
-
+	
+	/**
+	* send a Message to discord via the webhook
+	*/
+	sendDiscordMessage: function(jsn, message, webhook) {
+		// check webhook parameter
+		// use global webhook if webhook not set
+		if (!webhook){
+			console.log('[app.js] sendDiscordMessage: No Discord webhook submitted, using default webhook');
+			webhook = this.settings.defaultwebhook
+		}
+		// check message
+		if (!message){
+			console.log('[app.js] sendDiscordMessage: No message submitted, cancelling here.');
+			$SD.api.showAlert(jsn.context);
+			return;
+		}
+		
+		// send message to webhook
+		// Set up request headers to send the data to the webhook properly
+        $.ajaxSetup({
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(data) {
+            console.log('[app.js] Sending event: showOk');
+            $SD.api.showOk(jsn.context);
+          },
+          failure: function(data) {
+            console.log('[app.js] Sending event: showAlert');
+            $SD.api.showAlert(jsn.context);
+          },
+          error: function(data) {
+            console.log('[app.js] Sending event: showAlert');
+            $SD.api.showAlert(jsn.context);
+          },
+        });
+		
+		// Post to the Webhook
+        $.post(webhook, message);
+	},
 
 };
 

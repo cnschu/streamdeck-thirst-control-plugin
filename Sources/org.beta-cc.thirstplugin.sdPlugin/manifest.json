@@ -32,7 +32,7 @@
       ], 
       "Tooltip": "Rolls and includes your hunger set with the 'Set Hunger' Action", 
       "UUID": "org.beta-cc.thirstplugin.rollwithhunger"
-    }
+    },
     {
       "Icon": "action/images/actionimage", 
       "Name": "Roll without Hunger", 
@@ -43,7 +43,7 @@
       ], 
       "Tooltip": "Rolls, ignoring your hunger and Blood potency", 
       "UUID": "org.beta-cc.thirstplugin.rollwithouthunger"
-    }
+    },
     {
       "Icon": "action/images/actionimage", 
       "Name": "Roll Discipline", 
@@ -62,7 +62,7 @@
   "CategoryIcon": "action/images/discord_cat",
   "CodePath": "index.html", 
   "PropertyInspectorPath": "propertyinspector/index.html", 
-  "Description": "A plugin to control the discord-bot 'Thist' for playing Vampire - The Masquerade v5 in Discord", 
+  "Description": "A plugin to control the discord-bot 'Thirst' for playing Vampire - The Masquerade v5 in Discord", 
   "Name": "Thirst Discord Bot Control", 
   "Icon": "action/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 

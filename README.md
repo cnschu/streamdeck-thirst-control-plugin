@@ -1,6 +1,8 @@
 # streamdeck-thirst-control-plugin
 Plugin for the elgato stream Deck to control the Discord bot "Thirst"
 
-Based on the https://github.com/elgatosf/streamdeck-plugintemplate streamdeck JS template by elgato.
+based on
+- streamdeck JS template by elgato (https://github.com/elgatosf/streamdeck-plugintemplate)
+- Discord Message plugin by logically sound (https://github.com/logicallysound/streamdeck-discord-message)
 
 At the moment it sis a very raw draft without an practical functions at all.

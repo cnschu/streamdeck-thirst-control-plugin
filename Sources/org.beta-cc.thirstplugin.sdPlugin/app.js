@@ -38,6 +38,25 @@ var sendMessage = {
     },
 };
 
+var setHunger = {
+    settings:{},
+    onDidReceiveSettings: function(jsn) {
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
+
+        this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
+    },
+
+    onWillAppear: function (jsn) {
+        console.log("[app.js] sendMessage.onWillAppear", jsn.payload.settings);
+        this.settings[jsn.context] = jsn.payload.settings;
+	},
+
+    onKeyUp: function (jsn) {
+        console.log("[app.js] sendMessage.keyUp: ", jsn.payload.settings);
+		sendDiscordMessage(jsn,this.settings[jsn.context].webhook,this.settings[jsn.context].message);
+    },
+};
+
 function sendDiscordMessage(jsn, webhook,message){
 	console.log("[app.js] sendDiscordMessage(): ", jsn, webhook, message);
 	var payload = { "content": message };

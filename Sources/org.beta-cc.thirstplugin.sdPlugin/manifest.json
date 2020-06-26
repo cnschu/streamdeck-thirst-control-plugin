@@ -1,27 +1,28 @@
 {
   "Actions": [
     {
-      "Icon": "action/images/actionimage", 
-      "Name": "Set Values", 
-      "States": [
-        {
-          "Image": "action/images/action"
-        }
-      ], 
-      "Tooltip": "Set one or all of the values. hunger and blood potency are set for the referenced character, the global webhook is set as the default.", 
-      "UUID": "org.beta-cc.thirstplugin.setvalues"
-    },
+		"Icon": "action/images/actionimage", 
+		"Name": "Set Hunger", 
+		"PropertyInspectorPath": "propertyinspector/setHunger.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "Set Hunger for the referenced character", 
+		"UUID": "org.beta-cc.thirstplugin.sethunger"
+	},
 	{
 		"Icon": "action/images/actionimage", 
 		"Name": "Send Message to Discord Channel",
 		"PropertyInspectorPath": "propertyinspector/sendMessage.html", 
 		"States": [
-        {
-          "Image": "action/images/action"
-        }
-      ], 
-      "Tooltip": "Posts a message to a discord channel.", 
-      "UUID": "org.beta-cc.thirstplugin.sendmessage"
+			{
+			  "Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "Posts a message to a discord channel.", 
+		"UUID": "org.beta-cc.thirstplugin.sendmessage"
     },
     {
       "Icon": "action/images/actionimage", 

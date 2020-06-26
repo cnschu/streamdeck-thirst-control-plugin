@@ -1,84 +1,41 @@
 /* global $CC, Utils, $SD */
 
-/**
- * Here are a couple of wrappers we created to help ypu quickly setup
- * your plugin and subscribe to events sent by Stream Deck to your plugin.
- */
-
- /**
-  * The 'connected' event is sent to your plugin, after the plugin's instance
-  * is registered with Stream Deck software. It carries the current websocket
-  * and other information about the current environmet in a JSON object
-  * You can use it to subscribe to events you want to use in your plugin.
-  */
-
+// is called after plugin is registered, carries current websocket an env variables in the JSON
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
-    /** subscribe to the willAppear and other events */
-    $SD.on('org.beta-cc.thirstplugin.action.willAppear', (jsonObj) => action.onWillAppear(jsonObj));
-    $SD.on('org.beta-cc.thirstplugin.action.keyUp', (jsonObj) => action.onKeyUp(jsonObj));
-    $SD.on('org.beta-cc.thirstplugin.action.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
-    $SD.on('org.beta-cc.thirstplugin.action.didReceiveSettings', (jsonObj) => action.onDidReceiveSettings(jsonObj));
-    $SD.on('org.beta-cc.thirstplugin.action.propertyInspectorDidAppear', (jsonObj) => {
+    console.log('[app.js] connected');
+	/** subscribe to the willAppear and other events */
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.willAppear', jsonObj => sendMessage.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.keyUp', jsonObj => sendMessage.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.sendToPlugin', jsonObj => sendMessage.onSendToPlugin(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.didReceiveSettings', jsonObj => sendMessage.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.propertyInspectorDidAppear', jsonObj => {
         console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js]propertyInspectorDidAppear:');
     });
-    $SD.on('org.beta-cc.thirstplugin.action.propertyInspectorDidDisappear', (jsonObj) => {
+    $SD.on('org.beta-cc.thirstplugin.sendmessage.propertyInspectorDidDisappear', (jsonObj) => {
         console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js]propertyInspectorDidDisappear:');
     });
 };
 
 /** ACTIONS */
 
-const action = {
+var sendMessage = {
     settings:{},
     onDidReceiveSettings: function(jsn) {
         console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
 
-        this.settings = Utils.getProp(jsn, 'payload.settings', {});
-        this.doSomeThing(this.settings, 'onDidReceiveSettings', 'orange');
-
-        /**
-         * In this example we put a HTML-input element with id='mynameinput'
-         * into the Property Inspector's DOM. If you enter some data into that
-         * input-field it get's saved to Stream Deck persistently and the plugin
-         * will receice the updated 'didReceiveSettings' event.
-         * Here we look for this setting and use it to change the title of
-         * the key.
-         */
-
-         this.setTitle(jsn);
+        this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
     },
-
-    /** 
-     * The 'willAppear' event is the first event a key will receive, right before it gets
-     * showed on your Stream Deck and/or in Stream Deck software.
-     * This event is a good place to setup your plugin and look at current settings (if any),
-     * which are embedded in the events payload.
-     */
 
     onWillAppear: function (jsn) {
-        console.log("You can cache your settings in 'onWillAppear'", jsn.payload.settings);
-        /**
-         * "The willAppear event carries your saved settings (if any). You can use these settings
-         * to setup your plugin or save the settings for later use. 
-         * If you want to request settings at a later time, you can do so using the
-         * 'getSettings' event, which will tell Stream Deck to send your data 
-         * (in the 'didReceiceSettings above)
-         * 
-         * $SD.api.getSettings(jsn.context);
-        */
-        this.settings = jsn.payload.settings;
-
-        // nothing in the settings pre-fill something just for demonstration purposes
-        if (!this.settings || Object.keys(this.settings).length === 0) {
-            this.settings.mynameinput = 'TEMPLATE';
-        }
-        this.setTitle(jsn);
-    },
+        console.log("[app.js] sendMessage.onWillAppear", jsn.payload.settings);
+        this.settings[jsn.context] = jsn.payload.settings;
+	},
 
     onKeyUp: function (jsn) {
-        this.doSomeThing(jsn, 'onKeyUp', 'green');
+        console.log("[app.js] sendMessage.keyUp: ", jsn.payload.settings);
+		this.sendDiscordMessage(jsn,this.settings[jsn.context].webhook,this.settings[jsn.context].message);
     },
 
     onSendToPlugin: function (jsn) {
@@ -141,23 +98,12 @@ const action = {
 	/**
 	* send a Message to discord via the webhook
 	*/
-	sendDiscordMessage: function(jsn, message, webhook) {
-		// check webhook parameter
-		// use global webhook if webhook not set
-		if (!webhook){
-			console.log('[app.js] sendDiscordMessage: No Discord webhook submitted, using default webhook');
-			webhook = this.settings.defaultwebhook
-		}
-		// check message
-		if (!message){
-			console.log('[app.js] sendDiscordMessage: No message submitted, cancelling here.');
-			$SD.api.showAlert(jsn.context);
-			return;
-		}
+	sendDiscordMessage: function(jsn, webhook, message) {
+        console.log("[app.js] sendMessage.sendDiscordMessage: ", jsn.payload.settings, webhook, message);
+
+		var payload = { "content": message };
 		
-		// send message to webhook
-		// Set up request headers to send the data to the webhook properly
-        $.ajaxSetup({
+		$.ajaxSetup({
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data) {
@@ -175,7 +121,7 @@ const action = {
         });
 		
 		// Post to the Webhook
-        $.post(webhook, message);
+        $.post(webhook, JSON.stringify(payload));
 	},
 
 };

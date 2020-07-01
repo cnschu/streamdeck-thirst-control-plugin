@@ -33,7 +33,17 @@ function connected(jsn) {
         console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js] inchunger.propertyInspectorDidAppear:');
     });
     $SD.on('org.beta-cc.thirstplugin.inchunger.propertyInspectorDidDisappear', (jsonObj) => {
-        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] închunger.propertyInspectorDidDisappear:');
+        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] inchunger.propertyInspectorDidDisappear:');
+    });
+
+    $SD.on('org.beta-cc.thirstplugin.dechunger.willAppear', jsonObj => decHunger.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.dechunger.keyUp', jsonObj => decHunger.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.dechunger.didReceiveSettings', jsonObj => decHunger.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.dechunger.propertyInspectorDidAppear', jsonObj => {
+        console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js] dechunger.propertyInspectorDidAppear:');
+    });
+    $SD.on('org.beta-cc.thirstplugin.dechunger.propertyInspectorDidDisappear', (jsonObj) => {
+        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] dechunger.propertyInspectorDidDisappear:');
     });
 };
 
@@ -75,6 +85,9 @@ var setHunger = {
     onKeyUp: function (jsn) {
         console.log("[app.js] setHunger.keyUp: ", jsn.payload.settings);
 		console.log("[app.js] incHunger.keyUp: old hunger = ", vampire.hunger);
+		
+		if (parseInt(this.settings[jsn.context].hunger)>5) {this.settings[jsn.context].hunger = 5;} else if (parseInt(this.settings[jsn.context].hunger)<0) {this.settings[jsn.context].hunger = 0};
+
 		vampire.hunger = parseInt(this.settings[jsn.context].hunger);
 		console.log("[app.js] setHunger.keyUp: new hunger = ", vampire.hunger);
     },
@@ -100,6 +113,28 @@ var incHunger = {
 		console.log("[app.js] incHunger.keyUp: new hunger = ", parseInt(vampire.hunger));
     },
 };
+
+var decHunger = {
+    settings:{},
+    onDidReceiveSettings: function(jsn) {
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js] decHunger.onDidReceiveSettings:');
+        this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
+    },
+
+    onWillAppear: function (jsn) {
+        console.log("[app.js] decHunger.onWillAppear:", jsn.payload.settings);
+        this.settings[jsn.context] = jsn.payload.settings;
+	},
+
+    onKeyUp: function (jsn) {
+        console.log("[app.js] decHunger.keyUp: ", jsn.payload.settings);
+		console.log("[app.js] decHunger.keyUp: old hunger = ", parseInt(vampire.hunger));
+		vampire.hunger = vampire.hunger - 1;
+		if (vampire.hunger<0) {vampire.hunger = 0;};
+		console.log("[app.js] decHunger.keyUp: new hunger = ", parseInt(vampire.hunger));
+    },
+};
+
 
 function sendDiscordMessage(jsn, webhook,message){
 	console.log("[app.js] sendDiscordMessage(): ", jsn, webhook, message);

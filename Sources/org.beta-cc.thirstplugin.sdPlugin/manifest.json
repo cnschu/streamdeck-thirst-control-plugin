@@ -33,8 +33,20 @@
 				"Image": "action/images/action"
 			}
 		], 
-		"Tooltip": "increase hunger by 1", 
+		"Tooltip": "increase hunger by 1 (maximum 5)", 
 		"UUID": "org.beta-cc.thirstplugin.inchunger"
+	},
+    {
+		"Icon": "action/images/actionimage", 
+		"Name": "Hunger -1",
+		"PropertyInspectorPath": "propertyinspector/decHunger.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "decrease hunger by 1 (minimum 0)", 
+		"UUID": "org.beta-cc.thirstplugin.dechunger"
 	},
     {
       "Icon": "action/images/actionimage", 

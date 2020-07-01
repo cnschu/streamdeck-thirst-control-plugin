@@ -1,17 +1,5 @@
 {
   "Actions": [
-    {
-		"Icon": "action/images/actionimage", 
-		"Name": "Set Hunger", 
-		"PropertyInspectorPath": "propertyinspector/setHunger.html", 
-		"States": [
-			{
-				"Image": "action/images/action"
-			}
-		], 
-		"Tooltip": "Set Hunger for the referenced character", 
-		"UUID": "org.beta-cc.thirstplugin.sethunger"
-	},
 	{
 		"Icon": "action/images/actionimage", 
 		"Name": "Send Message to Discord Channel",
@@ -24,6 +12,30 @@
 		"Tooltip": "Posts a message to a discord channel.", 
 		"UUID": "org.beta-cc.thirstplugin.sendmessage"
     },
+    {
+		"Icon": "action/images/actionimage", 
+		"Name": "Hunger - set",
+		"PropertyInspectorPath": "propertyinspector/setHunger.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "Set Hunger for the referenced character", 
+		"UUID": "org.beta-cc.thirstplugin.sethunger"
+	},
+    {
+		"Icon": "action/images/actionimage", 
+		"Name": "Hunger +1",
+		"PropertyInspectorPath": "propertyinspector/incHunger.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "increase hunger by 1", 
+		"UUID": "org.beta-cc.thirstplugin.inchunger"
+	},
     {
       "Icon": "action/images/actionimage", 
       "Name": "Roll with Hunger", 

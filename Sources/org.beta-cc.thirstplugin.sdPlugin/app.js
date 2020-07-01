@@ -15,20 +15,42 @@ function connected(jsn) {
     $SD.on('org.beta-cc.thirstplugin.sendmessage.propertyInspectorDidDisappear', (jsonObj) => {
         console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] sendmessage.propertyInspectorDidDisappear:');
     });
+	
+    $SD.on('org.beta-cc.thirstplugin.sethunger.willAppear', jsonObj => setHunger.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sethunger.keyUp', jsonObj => setHunger.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sethunger.didReceiveSettings', jsonObj => setHunger.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.sethunger.propertyInspectorDidAppear', jsonObj => {
+        console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js] sethunger.propertyInspectorDidAppear:');
+    });
+    $SD.on('org.beta-cc.thirstplugin.sethunger.propertyInspectorDidDisappear', (jsonObj) => {
+        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] sethunger.propertyInspectorDidDisappear:');
+    });
+
+    $SD.on('org.beta-cc.thirstplugin.inchunger.willAppear', jsonObj => incHunger.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.inchunger.keyUp', jsonObj => incHunger.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.inchunger.didReceiveSettings', jsonObj => incHunger.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.inchunger.propertyInspectorDidAppear', jsonObj => {
+        console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js] inchunger.propertyInspectorDidAppear:');
+    });
+    $SD.on('org.beta-cc.thirstplugin.inchunger.propertyInspectorDidDisappear', (jsonObj) => {
+        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] închunger.propertyInspectorDidDisappear:');
+    });
 };
 
 /** ACTIONS */
-
+var vampire = {
+	hunger:1,
+	bp:1,
+}
 var sendMessage = {
     settings:{},
     onDidReceiveSettings: function(jsn) {
-        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
-
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]sendMessage.onDidReceiveSettings:');
         this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
     },
 
     onWillAppear: function (jsn) {
-        console.log("[app.js] sendMessage.onWillAppear", jsn.payload.settings);
+        console.log("[app.js] sendMessage.onWillAppear:", jsn.payload.settings);
         this.settings[jsn.context] = jsn.payload.settings;
 	},
 
@@ -41,19 +63,41 @@ var sendMessage = {
 var setHunger = {
     settings:{},
     onDidReceiveSettings: function(jsn) {
-        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
-
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]setHunger.onDidReceiveSettings:');
         this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
     },
 
     onWillAppear: function (jsn) {
-        console.log("[app.js] sendMessage.onWillAppear", jsn.payload.settings);
+        console.log("[app.js] setHunger.onWillAppear:", jsn.payload.settings);
         this.settings[jsn.context] = jsn.payload.settings;
 	},
 
     onKeyUp: function (jsn) {
-        console.log("[app.js] sendMessage.keyUp: ", jsn.payload.settings);
-		sendDiscordMessage(jsn,this.settings[jsn.context].webhook,this.settings[jsn.context].message);
+        console.log("[app.js] setHunger.keyUp: ", jsn.payload.settings);
+		console.log("[app.js] incHunger.keyUp: old hunger = ", vampire.hunger);
+		vampire.hunger = parseInt(this.settings[jsn.context].hunger);
+		console.log("[app.js] setHunger.keyUp: new hunger = ", vampire.hunger);
+    },
+};
+
+var incHunger = {
+    settings:{},
+    onDidReceiveSettings: function(jsn) {
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js] incHunger.onDidReceiveSettings:');
+        this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
+    },
+
+    onWillAppear: function (jsn) {
+        console.log("[app.js] incHunger.onWillAppear:", jsn.payload.settings);
+        this.settings[jsn.context] = jsn.payload.settings;
+	},
+
+    onKeyUp: function (jsn) {
+        console.log("[app.js] incHunger.keyUp: ", jsn.payload.settings);
+		console.log("[app.js] incHunger.keyUp: old hunger = ", parseInt(vampire.hunger));
+		vampire.hunger = vampire.hunger + 1;
+		if (vampire.hunger>5) {vampire.hunger = 5;};
+		console.log("[app.js] incHunger.keyUp: new hunger = ", parseInt(vampire.hunger));
     },
 };
 

@@ -14,7 +14,7 @@
     },
     {
 		"Icon": "action/images/actionimage", 
-		"Name": "Hunger - set",
+		"Name": "Hunger: set",
 		"PropertyInspectorPath": "propertyinspector/setHunger.html", 
 		"States": [
 			{
@@ -26,7 +26,7 @@
 	},
     {
 		"Icon": "action/images/actionimage", 
-		"Name": "Hunger +1",
+		"Name": "Hunger: +1",
 		"PropertyInspectorPath": "propertyinspector/incHunger.html", 
 		"States": [
 			{
@@ -38,7 +38,7 @@
 	},
     {
 		"Icon": "action/images/actionimage", 
-		"Name": "Hunger -1",
+		"Name": "Hunger: -1",
 		"PropertyInspectorPath": "propertyinspector/decHunger.html", 
 		"States": [
 			{
@@ -47,6 +47,18 @@
 		], 
 		"Tooltip": "decrease hunger by 1 (minimum 0)", 
 		"UUID": "org.beta-cc.thirstplugin.dechunger"
+	},
+    {
+		"Icon": "action/images/actionimage", 
+		"Name": "Hunger: Display numerical",
+		"PropertyInspectorPath": "propertyinspector/dispHunger.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "displays the current hunger on a key", 
+		"UUID": "org.beta-cc.thirstplugin.disphunger"
 	},
     {
       "Icon": "action/images/actionimage", 

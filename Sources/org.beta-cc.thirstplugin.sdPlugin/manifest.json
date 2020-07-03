@@ -79,8 +79,48 @@
 		"States": [
 			{"Image": "actions/images/action"}
 		]
+    },
+    {
+		"UUID": "org.beta-cc.thirstplugin.setbp",
+		"Tooltip": "sets the blood potency to a new value.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Blood pontency: Set",
+		"PropertyInspectorPath": "propertyinspector/setBP.html", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
+    },
+    {
+		"UUID": "org.beta-cc.thirstplugin.incbp",
+		"Tooltip": "increases the blood potency by one.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Blood potency: +", 
+		"PropertyInspectorPath": "propertyinspector/incBP.html", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
+    },
+    {
+		"UUID": "org.beta-cc.thirstplugin.decbp",
+		"Tooltip": "decreases the blood potency by one.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Blood potency: -", 
+		"PropertyInspectorPath": "propertyinspector/decBP.html", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
+    },
+    {
+		"UUID": "org.beta-cc.thirstplugin.displbp",
+		"Tooltip": "displays the current blood pontency on a key.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Blood potency: display numerical", 
+		"PropertyInspectorPath": "propertyinspector/dispBP.html", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
     }
-  ], 
+	], 
   "SDKVersion": 2,
   "Author": "Christian Schulz", 
   "Category": "Discord Thirst Bot",
@@ -91,7 +131,7 @@
   "Name": "Thirst Discord Bot Control", 
   "Icon": "actions/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
-  "Version": "0.0.4",
+  "Version": "0.0.5",
   "OS": [
     {
         "Platform": "mac", 

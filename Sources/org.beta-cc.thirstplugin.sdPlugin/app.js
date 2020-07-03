@@ -19,6 +19,17 @@ function connected(jsn) {
         console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] rollflat.propertyInspectorDidDisappear:');
     });
 
+    $SD.on('org.beta-cc.thirstplugin.rollhunger.willAppear', jsonObj => rollHunger.onWillAppear(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.rollhunger.keyUp', jsonObj => rollHunger.onKeyUp(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.rollhunger.didReceiveSettings', jsonObj => rollHunger.onDidReceiveSettings(jsonObj));
+    $SD.on('org.beta-cc.thirstplugin.rollhunger.propertyInspectorDidAppear', jsonObj => {
+        console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js] rollhunger.propertyInspectorDidAppear:');
+    });
+    $SD.on('org.beta-cc.thirstplugin.rollhunger.propertyInspectorDidDisappear', (jsonObj) => {
+        console.log('%c%s', 'color: white; background: red; font-size: 13px;', '[app.js] rollhunger.propertyInspectorDidDisappear:');
+    });
+
+
     $SD.on('org.beta-cc.thirstplugin.sendmessage.willAppear', jsonObj => sendMessage.onWillAppear(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.sendmessage.keyUp', jsonObj => sendMessage.onKeyUp(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.sendmessage.didReceiveSettings', jsonObj => sendMessage.onDidReceiveSettings(jsonObj));
@@ -72,6 +83,23 @@ var rollFlat = {
     },
 };
 
+var rollHunger = {
+    settings:{},
+    onDidReceiveSettings: function(jsn) {
+        console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]rollHunger.onDidReceiveSettings:');
+        this.settings[jsn.context] = Utils.getProp(jsn, 'payload.settings', {});
+    },
+
+    onWillAppear: function (jsn) {
+        console.log("[app.js] rollHunger.onWillAppear:", jsn.payload.settings);
+        this.settings[jsn.context] = jsn.payload.settings;
+	},
+
+    onKeyUp: function (jsn) {
+        console.log("[app.js] rollHunger.keyUp: ", jsn.payload.settings, this.settings);
+		sendDiscordMessage(jsn,this.settings[jsn.context].webhook, "!v " + String(this.settings[jsn.context].dice) + " " + String(vampire.hunger));
+    },
+};
 
 
 var sendMessage = {

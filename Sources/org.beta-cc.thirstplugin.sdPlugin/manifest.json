@@ -61,16 +61,17 @@
 		"UUID": "org.beta-cc.thirstplugin.disphunger"
 	},
     {
-      "Icon": "action/images/actionimage", 
-      "Name": "Roll flat", 
-      "States": [
-        {
-          "Image": "action/images/action"
-        }
-      ], 
-      "Tooltip": "Rolls, ignoring your hunger and Blood potency, like rouse and humanity checks", 
-      "UUID": "org.beta-cc.thirstplugin.rollflat"
-    },
+		"Icon": "action/images/actionimage", 
+		"Name": "Roll flat", 
+		"PropertyInspectorPath": "propertyinspector/roll.html", 
+		"States": [
+			{
+				"Image": "action/images/action"
+			}
+		], 
+		"Tooltip": "Rolls, ignoring your hunger and Blood potency, like rouse and humanity checks", 
+		"UUID": "org.beta-cc.thirstplugin.rollflat"
+	},
     {
       "Icon": "action/images/actionimage", 
       "Name": "Roll with hunger", 
@@ -104,7 +105,7 @@
   "Name": "Thirst Discord Bot Control", 
   "Icon": "action/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
-  "Version": "0.0.2",
+  "Version": "0.0.3",
   "OS": [
     {
         "Platform": "mac", 

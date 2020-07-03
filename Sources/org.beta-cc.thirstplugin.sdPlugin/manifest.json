@@ -52,7 +52,7 @@
 	},
     {
 		"UUID": "org.beta-cc.thirstplugin.rollflat",
-		"Tooltip": "Rolls, ignoring your hunger and Blood potency, like rouse and humanity checks", 
+		"Tooltip": "Rolls a number of d10, ignoring your hunger and Blood potency, like rouse and humanity checks", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Roll flat", 
 		"PropertyInspectorPath": "propertyinspector/roll.html", 
@@ -62,9 +62,10 @@
 	},
     {
 		"UUID": "org.beta-cc.thirstplugin.rollhunger",
-		"Tooltip": "Rolls and includes your hunger set with the 'Set Hunger' Action", 
+		"Tooltip": "Rolls a number of d10 and includes your hunger set with the 'Set Hunger' Action", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Roll with hunger", 
+		"PropertyInspectorPath": "propertyinspector/roll.html", 
 		"States": [
 			{"Image": "actions/images/action"}
 		]
@@ -74,6 +75,7 @@
 		"Tooltip": "Roll for discipline use. Your set blood potency and hunger affecting this roll.", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Roll discipline", 
+		"PropertyInspectorPath": "propertyinspector/roll.html", 
 		"States": [
 			{"Image": "actions/images/action"}
 		]

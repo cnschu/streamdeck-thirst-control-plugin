@@ -1,98 +1,82 @@
 {
   "Actions": [
 	{
+		"UUID": "org.beta-cc.thirstplugin.sendmessage",
+		"Tooltip": "Posts a message to a discord channel.", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Send Message to Discord Channel",
 		"PropertyInspectorPath": "propertyinspector/sendMessage.html", 
 		"States": [
-			{
-			  "Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "Posts a message to a discord channel.", 
-		"UUID": "org.beta-cc.thirstplugin.sendmessage"
+			{"Image": "actions/images/action"}
+		]
     },
     {
+		"UUID": "org.beta-cc.thirstplugin.sethunger",
+		"Tooltip": "Set Hunger for the referenced character", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Hunger: set",
 		"PropertyInspectorPath": "propertyinspector/setHunger.html", 
 		"States": [
-			{
-				"Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "Set Hunger for the referenced character", 
-		"UUID": "org.beta-cc.thirstplugin.sethunger"
+			{"Image": "actions/images/action"}
+		]
 	},
     {
+		"UUID": "org.beta-cc.thirstplugin.inchunger",
+		"Tooltip": "increase hunger by 1 (maximum 5)", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Hunger: +1",
 		"PropertyInspectorPath": "propertyinspector/incHunger.html", 
 		"States": [
-			{
-				"Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "increase hunger by 1 (maximum 5)", 
-		"UUID": "org.beta-cc.thirstplugin.inchunger"
+			{"Image": "actions/images/action"}
+		]
 	},
     {
+		"UUID": "org.beta-cc.thirstplugin.dechunger",
+		"Tooltip": "decrease hunger by 1 (minimum 0)", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Hunger: -1",
 		"PropertyInspectorPath": "propertyinspector/decHunger.html", 
 		"States": [
-			{
-				"Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "decrease hunger by 1 (minimum 0)", 
-		"UUID": "org.beta-cc.thirstplugin.dechunger"
+			{"Image": "actions/images/action"}
+		]
 	},
     {
+		"UUID": "org.beta-cc.thirstplugin.disphunger",
+		"Tooltip": "displays the current hunger on a key", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Hunger: Display numerical",
 		"PropertyInspectorPath": "propertyinspector/dispHunger.html", 
 		"States": [
-			{
-				"Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "displays the current hunger on a key", 
-		"UUID": "org.beta-cc.thirstplugin.disphunger"
+			{"Image": "actions/images/action"}
+		]
 	},
     {
+		"UUID": "org.beta-cc.thirstplugin.rollflat",
+		"Tooltip": "Rolls, ignoring your hunger and Blood potency, like rouse and humanity checks", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Roll flat", 
 		"PropertyInspectorPath": "propertyinspector/roll.html", 
 		"States": [
-			{
-				"Image": "actions/images/action"
-			}
-		], 
-		"Tooltip": "Rolls, ignoring your hunger and Blood potency, like rouse and humanity checks", 
-		"UUID": "org.beta-cc.thirstplugin.rollflat"
+			{"Image": "actions/images/action"}
+		]
 	},
     {
-      "Icon": "actions/images/actionimage", 
-      "Name": "Roll with hunger", 
-      "States": [
-        {
-          "Image": "actions/images/action"
-        }
-      ], 
-      "Tooltip": "Rolls and includes your hunger set with the 'Set Hunger' Action", 
-      "UUID": "org.beta-cc.thirstplugin.rollhunger"
+		"UUID": "org.beta-cc.thirstplugin.rollhunger",
+		"Tooltip": "Rolls and includes your hunger set with the 'Set Hunger' Action", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Roll with hunger", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
     },
     {
-      "Icon": "actions/images/actionimage", 
-      "Name": "Roll discipline", 
-      "States": [
-        {
-          "Image": "actions/images/action"
-        }
-      ], 
-      "Tooltip": "Roll for discipline use. Your set blood potency and hunger affecting this roll.", 
-      "UUID": "org.beta-cc.thirstplugin.rolldiscipline"
+		"UUID": "org.beta-cc.thirstplugin.rolldiscipline",
+		"Tooltip": "Roll for discipline use. Your set blood potency and hunger affecting this roll.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Roll discipline", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
     }
   ], 
   "SDKVersion": 2,

@@ -50,6 +50,6 @@ var dispHunger = {
     onWillAppear: function (jsn) {
         // register the context for refresh
 		vampire.addhdnc(jsn.context);
-		vampire.refreshHungerDisplays();
+		vampire.refreshHungerDisplay(jsn.context);
 	},
 };

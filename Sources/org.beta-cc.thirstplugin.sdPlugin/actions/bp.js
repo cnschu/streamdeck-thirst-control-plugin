@@ -52,6 +52,6 @@ var dispBP = {
         console.log("[app.js] dispBP.onWillAppear invoked", this.bpdnc);
 		// register the context for refresh
 		vampire.addbpdnc(jsn.context);
-		vampire.refreshBPDisplays();
+		vampire.refreshBPDisplay(jsn.context);
 	},
 };

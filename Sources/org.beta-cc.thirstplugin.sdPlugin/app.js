@@ -45,7 +45,7 @@ var vampire = {
 	},
 	
 	
-	refreshHungerDisplay: function(context, index) {
+	refreshHungerDisplay: function(context) {
 		$SD.api.setTitle(context, String(vampire.hunger), DestinationEnum.HARDWARE_AND_SOFTWARE);
 	},
 
@@ -54,32 +54,22 @@ var vampire = {
 	*/
 	refreshHungerDisplays: function() {
 		// First refresh all numeric displays
-		this.hdnc.forEach(
-			function(context, index){
-				$SD.api.setTitle(context, String(vampire.hunger), DestinationEnum.HARDWARE_AND_SOFTWARE);
-			}
-		)
+		this.hdnc.forEach(vampire.refreshHungerDisplay);
 	},
 	
 	/*****
 	** refresh one BP display 
 	*/
-/*
 	refreshBPDisplay: function(context){
 		$SD.api.setTitle(context, String(vampire.bp), DestinationEnum.HARDWARE_AND_SOFTWARE);
 	},
-*/
+
 	/*****
 	** refresh all BP displays
 	*/
 	refreshBPDisplays: function() {
-		console.log("[app.js] refreshBPDisplays: invoked", this.bpdnc);
 		// First refresh all numeric displays
-		this.bpdnc.forEach(
-			function(context, index){
-				$SD.api.setTitle(context, String(vampire.bp), DestinationEnum.HARDWARE_AND_SOFTWARE);
-			}
-		)
+		this.bpdnc.forEach(vampire.refreshBPDisplay);
 	}
 }
 

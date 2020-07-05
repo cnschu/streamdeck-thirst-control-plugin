@@ -141,7 +141,7 @@
   "Name": "Thirst Discord Bot Control", 
   "Icon": "actions/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
-  "Version": "0.0.8",
+  "Version": "0.1.0",
   "OS": [
     {
         "Platform": "mac", 

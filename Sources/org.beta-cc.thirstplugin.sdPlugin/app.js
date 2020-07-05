@@ -30,7 +30,7 @@ var vampire = {
 	bp:1,
 	hdnc:[], // Hunger-Display (numeric) context = hdnc; each numeric hunger display registers his context here by calling .addhdnc(context)
 	bpdnc:[],// Blood Potency-Display (numeric) context = bpdnc; each numeric blood potency display registers his context here by calling .addbpdnc(context)
-	
+	bpdisciplinebonus:[0,0,1,1,2,2,3,3,4], // bonus from blood potency to discipline
 	addhdnc: function (context) {
 		// nur hinzufügen, wenn noch nicht vorhanden
 		if (this.hdnc.find(element => element == context) != -1) {

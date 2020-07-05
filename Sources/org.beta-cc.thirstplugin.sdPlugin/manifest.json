@@ -72,6 +72,16 @@
     },
     {
 		"UUID": "org.beta-cc.thirstplugin.rolldiscipline",
+		"Tooltip": "Rolls a number of d10 and includes your hunger and Blood potency discipline bonus.", 
+		"Icon": "actions/images/actionimage", 
+		"Name": "Roll discipline", 
+		"PropertyInspectorPath": "propertyinspector/roll.html", 
+		"States": [
+			{"Image": "actions/images/action"}
+		]
+    },
+    {
+		"UUID": "org.beta-cc.thirstplugin.rolldiscipline",
 		"Tooltip": "Roll for discipline use. Your set blood potency and hunger affecting this roll.", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Roll discipline", 
@@ -131,7 +141,7 @@
   "Name": "Thirst Discord Bot Control", 
   "Icon": "actions/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
-  "Version": "0.0.6",
+  "Version": "0.0.7",
   "OS": [
     {
         "Platform": "mac", 

@@ -53,7 +53,7 @@ var setBP = {
 	},
 
     onKeyUp: function (jsn) {
-		if (parseInt(this.settings[jsn.context].bp)>8) {this.settings[jsn.context].bp = 8;} else if (parseInt(this.settings[jsn.context].bp)<1) {this.settings[jsn.context].bp = 1};
+		if (parseInt(this.settings[jsn.context].bp)>8) {this.settings[jsn.context].bp = 8;} else if (parseInt(this.settings[jsn.context].bp)<0) {this.settings[jsn.context].bp = 0};
 		vampire.bp = parseInt(this.settings[jsn.context].bp);
 		vampire.refreshBPDisplays();
     },
@@ -88,7 +88,7 @@ var decBP = {
 
     onKeyUp: function (jsn) {
 		vampire.bp = vampire.bp - 1;
-		if (vampire.bp<1) {vampire.bp = 1;};
+		if (vampire.bp<0) {vampire.bp = 0;};
 		vampire.refreshBPDisplays();
     },
 };

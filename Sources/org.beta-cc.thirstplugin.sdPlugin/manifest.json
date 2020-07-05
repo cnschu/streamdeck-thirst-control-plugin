@@ -111,7 +111,7 @@
 		]
     },
     {
-		"UUID": "org.beta-cc.thirstplugin.displbp",
+		"UUID": "org.beta-cc.thirstplugin.dispbp",
 		"Tooltip": "displays the current blood pontency on a key.", 
 		"Icon": "actions/images/actionimage", 
 		"Name": "Blood potency: display numerical", 
@@ -131,7 +131,7 @@
   "Name": "Thirst Discord Bot Control", 
   "Icon": "actions/images/action", 
   "URL": "https://github.com/cnschu/streamdeck-thirst-control-plugin", 
-  "Version": "0.0.5",
+  "Version": "0.0.6",
   "OS": [
     {
         "Platform": "mac", 

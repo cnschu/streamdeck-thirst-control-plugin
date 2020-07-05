@@ -1,4 +1,4 @@
-function connect_roll (jsn) {
+function connect_roll () {
     $SD.on('org.beta-cc.thirstplugin.rollflat.willAppear', jsonObj => rollFlat.onWillAppear(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.rollflat.keyUp', jsonObj => rollFlat.onKeyUp(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.rollflat.didReceiveSettings', jsonObj => rollFlat.onDidReceiveSettings(jsonObj));

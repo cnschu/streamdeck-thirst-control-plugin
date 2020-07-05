@@ -7,9 +7,9 @@ function connected(jsn) {
     console.log('[app.js] connected');
 	
 	// connect the events in other .js files
-	connect_hunger(jsn);
-	connect_roll(jsn);
-	connect_bp(jsn);
+	connect_hunger();
+	connect_roll();
+	connect_bp();
 	
     $SD.on('org.beta-cc.thirstplugin.sendmessage.willAppear', jsonObj => sendMessage.onWillAppear(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.sendmessage.keyUp', jsonObj => sendMessage.onKeyUp(jsonObj));
@@ -30,12 +30,28 @@ var vampire = {
 	bp:1,
 	hdnc:[], // Hunger-Display (numeric) context = hdnc; each numeric hunger display registers his context here by calling .addhdnc(context)
 	bpdnc:[],// Blood Potency-Display (numeric) context = bpdnc; each numeric blood potency display registers his context here by calling .addbpdnc(context)
+	
 	addhdnc: function (context) {
-		this.hdnc.push(context);
+		// nur hinzufügen, wenn noch nicht vorhanden
+		if (this.hdnc.find(element => element == context) != -1) {
+			this.hdnc.push(context);
+		};
 	},
 	addbpdnc: function (context) {
-		this.bpdnc.push(context);
+		// nur hinzufügen, wenn noch nicht vorhanden
+		if (this.bpdnc.find(element => element == context) != -1) {
+			this.bpdnc.push(context);
+		};
 	},
+	
+	
+	refreshHungerDisplay: function(context, index) {
+		$SD.api.setTitle(context, String(vampire.hunger), DestinationEnum.HARDWARE_AND_SOFTWARE);
+	},
+
+	/*****
+	** refresh all Hunger displays
+	*/
 	refreshHungerDisplays: function() {
 		// First refresh all numeric displays
 		this.hdnc.forEach(
@@ -48,21 +64,23 @@ var vampire = {
 	/*****
 	** refresh one BP display 
 	*/
+/*
 	refreshBPDisplay: function(context){
 		$SD.api.setTitle(context, String(vampire.bp), DestinationEnum.HARDWARE_AND_SOFTWARE);
 	},
-	
+*/
 	/*****
 	** refresh all BP displays
 	*/
 	refreshBPDisplays: function() {
+		console.log("[app.js] refreshBPDisplays: invoked", this.bpdnc);
 		// First refresh all numeric displays
 		this.bpdnc.forEach(
 			function(context, index){
-				refreshBPDisplay(context);
+				$SD.api.setTitle(context, String(vampire.bp), DestinationEnum.HARDWARE_AND_SOFTWARE);
 			}
 		)
-	},
+	}
 }
 
 

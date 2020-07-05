@@ -1,7 +1,7 @@
 /*******
 ** all hunger related functions who are not part of the vampire-object
 */
-function connect_hunger (jsn) {
+function connect_hunger () {
     $SD.on('org.beta-cc.thirstplugin.sethunger.willAppear', jsonObj => setHunger.onWillAppear(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.sethunger.keyUp', jsonObj => setHunger.onKeyUp(jsonObj));
     $SD.on('org.beta-cc.thirstplugin.sethunger.didReceiveSettings', jsonObj => setHunger.onDidReceiveSettings(jsonObj));
@@ -100,5 +100,6 @@ var dispHunger = {
     onWillAppear: function (jsn) {
         // register the context for refresh
 		vampire.addhdnc(jsn.context);
+		vampire.refreshHungerDisplays();
 	},
 };
